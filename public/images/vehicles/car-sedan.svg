@@ -1,0 +1,51 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 70" width="120" height="70">
+  <defs>
+    <linearGradient id="body" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E8E8EE"/>
+      <stop offset="40%" stop-color="#D0D0DA"/>
+      <stop offset="100%" stop-color="#A0A0B0"/>
+    </linearGradient>
+    <linearGradient id="roof" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F5F5FA"/>
+      <stop offset="100%" stop-color="#D8D8E2"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4A6FA5"/>
+      <stop offset="100%" stop-color="#1E3A5F"/>
+    </linearGradient>
+    <radialGradient id="wheel" cx="35%" cy="30%">
+      <stop offset="0%" stop-color="#666"/>
+      <stop offset="50%" stop-color="#333"/>
+      <stop offset="100%" stop-color="#111"/>
+    </radialGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+  <!-- Drop shadow -->
+  <ellipse cx="55" cy="64" rx="42" ry="4" fill="rgba(0,0,0,0.15)"/>
+  <!-- Body -->
+  <rect x="8" y="18" width="104" height="38" rx="18" fill="url(#body)" filter="url(#shadow)"/>
+  <!-- Bumper highlight -->
+  <rect x="85" y="28" width="24" height="18" rx="6" fill="rgba(255,255,255,0.15)"/>
+  <!-- Roof -->
+  <rect x="30" y="8" width="55" height="30" rx="14" fill="url(#roof)"/>
+  <!-- Windshield -->
+  <rect x="75" y="14" width="22" height="22" rx="8" fill="url(#glass)" opacity="0.9"/>
+  <!-- Rear window -->
+  <rect x="25" y="14" width="16" height="22" rx="6" fill="url(#glass)" opacity="0.75"/>
+  <!-- Tail lights -->
+  <rect x="10" y="28" width="6" height="14" rx="3" fill="#EF4444" opacity="0.9"/>
+  <rect x="10" y="28" width="6" height="14" rx="3" fill="#FCA5A5" opacity="0.3"/>
+  <!-- Headlights -->
+  <rect x="108" y="26" width="5" height="10" rx="2" fill="#FDE68A" opacity="0.9"/>
+  <rect x="108" y="38" width="5" height="10" rx="2" fill="#FDE68A" opacity="0.9"/>
+  <!-- Front wheels -->
+  <circle cx="88" cy="54" r="9" fill="url(#wheel)"/>
+  <circle cx="88" cy="54" r="3.5" fill="#444"/>
+  <!-- Rear wheels -->
+  <circle cx="32" cy="54" r="9" fill="url(#wheel)"/>
+  <circle cx="32" cy="54" r="3.5" fill="#444"/>
+  <!-- Side mirror hint -->
+  <rect x="88" y="16" width="3" height="6" rx="1" fill="#999"/>
+</svg>

@@ -158,7 +158,7 @@ const MapBackground = ({ state = 'idle' }) => {
                 dur="5.8s"
                 repeatCount="indefinite"
               />
-              <image href="/images/vehicles/taxi-minibus.png" x="250" y="308" width="48" height="23" />
+              <image href="/images/vehicles/taxi-minibus.svg" x="250" y="308" width="48" height="23" />
             </g>
             {/* Car 3 – sedan */}
             <g opacity="0.65">
