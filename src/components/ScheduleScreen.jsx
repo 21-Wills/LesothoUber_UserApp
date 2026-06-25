@@ -110,7 +110,7 @@ const ScheduleScreen = () => {
         {/* Success toast */}
         {success && (
           <div className="schedule-toast">
-            <CheckCircle size={16} color="var(--green)" />
+            <CheckCircle size={16} color="var(--green)" fill="var(--green)" />
             <span>Ride scheduled successfully!</span>
           </div>
         )}
@@ -155,7 +155,7 @@ const ScheduleScreen = () => {
             {/* Date */}
             <div className={`schedule-dt-field ${focused === 'date' ? 'sdt-focused' : ''}`}>
               <div className="schedule-dt-label">
-                <Calendar size={13} color="var(--teal)" />
+                <Calendar size={13} color="var(--teal)" fill="currentColor" />
                 <span>Date</span>
               </div>
               <input
@@ -176,7 +176,7 @@ const ScheduleScreen = () => {
             {/* Time */}
             <div className={`schedule-dt-field ${focused === 'time' ? 'sdt-focused' : ''}`}>
               <div className="schedule-dt-label">
-                <Clock size={13} color="var(--blue)" />
+                <Clock size={13} color="var(--blue)" fill="currentColor" />
                 <span>Time</span>
               </div>
               <input
@@ -196,7 +196,7 @@ const ScheduleScreen = () => {
           {/* Price card */}
           {canSchedule && (
             <div className="price-card" style={{ marginTop: 14, marginBottom: 0 }}>
-              <div className="price-card__icon"><DollarSign size={20} /></div>
+              <div className="price-card__icon"><DollarSign size={20} fill="currentColor" strokeWidth={1.5} /></div>
               <div className="price-card__info">
                 <p className="price-label">Estimated Fare</p>
                 <p className="price-value">M 45.00</p>
@@ -229,11 +229,11 @@ const ScheduleScreen = () => {
                   {/* Date + time strip */}
                   <div className="schedule-upcoming-times">
                     <div className="schedule-upcoming-date">
-                      <Calendar size={13} color="var(--teal)" />
+                      <Calendar size={13} color="var(--teal)" fill="currentColor" />
                       <span>{r.date}</span>
                     </div>
                     <div className="schedule-upcoming-time">
-                      <Clock size={13} color="var(--text-3)" />
+                      <Clock size={13} color="var(--text-3)" fill="currentColor" />
                       <span>{r.time}</span>
                     </div>
                   </div>
@@ -270,7 +270,7 @@ const ScheduleScreen = () => {
                   <div className="schedule-upcoming-footer">
                     <span className="trip-price">M {r.price}.00</span>
                     <button className="schedule-cancel-btn" onClick={() => removeScheduled(r.id)}>
-                      <Trash2 size={13} />
+                      <Trash2 size={13} fill="currentColor" />
                       Cancel
                     </button>
                   </div>

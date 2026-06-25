@@ -71,6 +71,13 @@ function App() {
     setIsAuthenticated(true)
   }
 
+  const handleSignOut = () => {
+    setUser(null)
+    setIsAuthenticated(false)
+    setRideFlow('idle')
+    setTab('home')
+  }
+
   useEffect(() => () => { if (matchTimer) clearTimeout(matchTimer) }, [matchTimer])
 
   const inRideFlow = rideFlow !== 'idle'
@@ -114,7 +121,7 @@ function App() {
           )}
           {tab === 'book' && <ScheduleScreen />}
           {tab === 'notifications' && <NotificationsScreen />}
-          {tab === 'account'       && <AccountScreen user={user} />}
+          {tab === 'account'       && <AccountScreen user={user} onSignOut={handleSignOut} />}
 
           <BottomNav
             active={tab}

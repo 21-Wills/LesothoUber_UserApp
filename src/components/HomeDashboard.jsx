@@ -82,7 +82,7 @@ const HomeDashboard = ({ pickup, setPickup, destination, setDestination, price, 
 
           {canRequest && (
             <div className="price-card">
-              <div className="price-card__icon"><DollarSign size={20} /></div>
+              <div className="price-card__icon"><DollarSign size={20} fill="currentColor" strokeWidth={1.5} /></div>
               <div className="price-card__info">
                 <p className="price-label">Estimated Fare</p>
                 <p className="price-value">M {price}.00</p>
@@ -100,7 +100,7 @@ const HomeDashboard = ({ pickup, setPickup, destination, setDestination, price, 
           </button>
 
           <p className="safety-note">
-            <Shield size={12} />
+            <Shield size={12} fill="currentColor" />
             Fixed price · No surge · Verified drivers
           </p>
         </div>
@@ -116,7 +116,7 @@ const HomeDashboard = ({ pickup, setPickup, destination, setDestination, price, 
                   <span className="quick-dest-label">{d.label}</span>
                   <span className="quick-dest-sub">{d.sub}</span>
                 </div>
-                <ArrowRight size={14} color="var(--text-4)" />
+                <ArrowRight size={14} color="var(--text-4)" fill="currentColor" />
               </button>
             ))}
           </div>
@@ -132,12 +132,12 @@ const HomeDashboard = ({ pickup, setPickup, destination, setDestination, price, 
             {RECENT_RIDES.map((ride, i) => (
               <button key={i} className="recent-ride-card" onClick={() => pickRecent(ride.to)}>
                 <div className="recent-ride-icon">
-                  <Car size={18} color="var(--teal)" />
+                  <Car size={18} color="var(--teal)" fill="currentColor" />
                 </div>
                 <div className="recent-ride-info">
                   <span className="recent-ride-to">{ride.to}</span>
                   <div className="recent-ride-meta">
-                    <Clock size={11} color="var(--text-3)" />
+                    <Clock size={11} color="var(--text-3)" fill="currentColor" />
                     <span className="recent-ride-date">{ride.date}</span>
                     <span className="recent-ride-dot">·</span>
                     <span className="recent-ride-price">M {ride.price}.00</span>
@@ -156,7 +156,7 @@ const HomeDashboard = ({ pickup, setPickup, destination, setDestination, price, 
         <div className="dashboard-section" style={{ paddingBottom: 16 }}>
           <div className="promo-banner">
             <div className="promo-banner-content">
-              <Zap size={18} color="#F59E0B" />
+              <Zap size={18} color="#F59E0B" fill="#F59E0B" />
               <div>
                 <p className="promo-title">Fixed Prices. Always.</p>
                 <p className="promo-sub">No surge pricing — ever. What you see is what you pay.</p>

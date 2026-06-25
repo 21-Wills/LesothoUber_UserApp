@@ -77,7 +77,7 @@ const NotificationsScreen = () => {
               className="notif-item-icon"
               style={{ background: `${n.iconColor}18`, border: `1px solid ${n.iconColor}30` }}
             >
-              <n.icon size={18} color={n.iconColor} strokeWidth={1.8} />
+              <n.icon size={18} color={n.iconColor} strokeWidth={2.5} fill={n.iconColor} />
             </div>
             <div className="notif-item-content">
               <div className="notif-item-top">

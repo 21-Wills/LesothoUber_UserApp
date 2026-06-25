@@ -39,7 +39,7 @@ const MENU_SECTIONS = [
   },
 ]
 
-const AccountScreen = ({ user }) => {
+const AccountScreen = ({ user, onSignOut }) => {
   const displayUser = user?.name
     ? { ...MOCK_USER, ...user, avatar: user.avatar || user.name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2) }
     : MOCK_USER
@@ -52,7 +52,7 @@ const AccountScreen = ({ user }) => {
         <div className="account-avatar">
           {displayUser.avatar}
           <button className="account-avatar-edit" aria-label="Edit photo">
-            <Edit3 size={12} />
+            <Edit3 size={12} fill="currentColor" />
           </button>
         </div>
         <div className="account-header-info">
@@ -92,13 +92,13 @@ const AccountScreen = ({ user }) => {
               {section.items.map((item) => (
                 <button key={item.label} className="account-menu-item">
                   <div className="account-menu-item-icon">
-                    <item.icon size={17} />
+                    <item.icon size={17} fill="currentColor" strokeWidth={2} />
                   </div>
                   <div className="account-menu-item-info">
                     <span className="account-menu-item-label">{item.label}</span>
                     <span className="account-menu-item-sub">{item.sub}</span>
                   </div>
-                  <ChevronRight size={16} color="var(--text-4)" />
+                  <ChevronRight size={16} color="var(--text-4)" fill="currentColor" />
                 </button>
               ))}
             </div>
@@ -106,8 +106,8 @@ const AccountScreen = ({ user }) => {
         ))}
 
         {/* Sign out */}
-        <button className="account-signout-btn">
-          <LogOut size={16} />
+        <button className="account-signout-btn" onClick={onSignOut}>
+          <LogOut size={16} fill="currentColor" />
           Sign Out
         </button>
       </div>

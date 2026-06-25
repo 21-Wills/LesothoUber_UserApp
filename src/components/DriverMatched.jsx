@@ -40,7 +40,7 @@ const DriverMatched = ({ driver, pickup, destination, price, onCancel }) => {
             </div>
           </div>
           <div className="driver-card__chevron">
-            <ChevronRight size={16} color="var(--text-4)" />
+            <ChevronRight size={16} color="var(--text-4)" fill="currentColor" />
           </div>
         </button>
 
@@ -74,11 +74,11 @@ const DriverMatched = ({ driver, pickup, destination, price, onCancel }) => {
         {/* Action buttons */}
         <div className="action-buttons">
           <button className="contact-btn">
-            <Phone size={16} />
+            <Phone size={16} fill="currentColor" />
             Contact Driver
           </button>
           <button className="cancel-ride-btn" onClick={onCancel}>
-            <X size={16} />
+            <X size={16} fill="currentColor" />
           </button>
         </div>
       </div>

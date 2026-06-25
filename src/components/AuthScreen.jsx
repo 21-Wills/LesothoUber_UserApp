@@ -73,14 +73,14 @@ const AuthScreen = ({ onSignIn }) => {
         {/* Back button */}
         {step === 'otp' && (
           <button className="auth-back" onClick={() => setStep('phone')}>
-            <ChevronLeft size={20} />
+            <ChevronLeft size={20} fill="currentColor" />
           </button>
         )}
 
         {/* Logo */}
         <div className="auth-logo">
           <div className="auth-logo-icon">
-            <MapPin size={22} color="#FFFFFF" fill="#FFFFFF" fillOpacity={0.15} />
+            <MapPin size={22} color="#FFFFFF" fill="#FFFFFF" fillOpacity={0.85} />
           </div>
           <span className="auth-logo-text">Leeto</span>
         </div>
@@ -149,7 +149,7 @@ const AuthScreen = ({ onSignIn }) => {
               disabled={!canSendOtp}
             >
               <span>Send code</span>
-              <ArrowRight size={18} />
+              <ArrowRight size={18} fill="currentColor" />
             </button>
 
             <p className="auth-switch">
@@ -166,7 +166,7 @@ const AuthScreen = ({ onSignIn }) => {
           <div className="auth-form">
             <div className="auth-otp-icon">
               <div className="auth-otp-icon-circle">
-                <Phone size={20} />
+                <Phone size={20} fill="currentColor" />
               </div>
             </div>
             <h2 className="auth-heading">Enter verification code</h2>
@@ -198,7 +198,7 @@ const AuthScreen = ({ onSignIn }) => {
               disabled={!canVerify}
             >
               <span>{mode === 'signin' ? 'Sign in' : 'Create account'}</span>
-              <ArrowRight size={18} />
+              <ArrowRight size={18} fill="currentColor" />
             </button>
 
             <p className="auth-resend">
@@ -210,7 +210,7 @@ const AuthScreen = ({ onSignIn }) => {
 
         {/* Footer */}
         <div className="auth-footer">
-          <Shield size={12} />
+          <Shield size={12} fill="currentColor" />
           <span>Your data is secure & encrypted</span>
         </div>
       </div>
