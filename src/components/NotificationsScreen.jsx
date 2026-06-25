@@ -46,7 +46,7 @@ const NOTIFICATIONS = [
     type: 'promo',
     icon: Tag,
     iconColor: '#F59E0B',
-    title: 'Welcome to RideApp!',
+    title: 'Welcome to Leeto!',
     body: 'Your first ride is on us. Enjoy a free trip up to M 50.',
     time: 'Jun 10',
     read: true,

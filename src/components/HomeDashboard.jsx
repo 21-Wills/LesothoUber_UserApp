@@ -36,7 +36,7 @@ const HomeDashboard = ({ pickup, setPickup, destination, setDestination, price, 
               <circle cx="12" cy="9" r="2.5" fill="#0A0A0A" />
             </svg>
           </div>
-          RideApp
+          Leeto
         </div>
         <div className="dashboard-avatar-sm">JD</div>
       </div>

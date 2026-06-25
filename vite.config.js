@@ -11,9 +11,9 @@ export default defineConfig({
         globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}'],
       },
       manifest: {
-        name: 'RideApp — Book a Ride',
-        short_name: 'RideApp',
-        description: 'Book a ride in seconds. Fixed prices, no surprises.',
+        name: 'Leeto — Your 4+1 Taxi',
+        short_name: 'Leeto',
+        description: 'Leeto — Your 4+1 taxi, on demand. Book a ride in seconds across Lesotho.',
         theme_color: '#0A0A0A',
         background_color: '#0A0A0A',
         display: 'standalone',

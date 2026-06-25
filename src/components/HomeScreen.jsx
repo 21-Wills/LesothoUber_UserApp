@@ -22,7 +22,7 @@ const HomeScreen = ({ pickup, setPickup, destination, setDestination, price, onR
               <circle cx="12" cy="9" r="2.5" fill="#0A0A0A" />
             </svg>
           </div>
-          RideApp
+          Leeto
         </div>
         <button className="profile-btn" aria-label="Profile">
           <span className="avatar-sm">J</span>
