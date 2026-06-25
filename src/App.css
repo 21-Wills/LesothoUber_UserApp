@@ -366,20 +366,16 @@
 
 .nearby-car {
   position: absolute;
-  width: 30px;
-  height: 30px;
-  background: var(--surface-3);
-  border: 1px solid var(--border);
-  border-radius: var(--r-xs);
+  width: 36px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--text-2);
 }
 
-.nearby-car:nth-child(5) { top: -18px;  left: 50%;  animation: car-drift-1 4.2s ease-in-out infinite; }
-.nearby-car:nth-child(6) { bottom:  5px; right: -22px; animation: car-drift-2 5.1s ease-in-out infinite; }
-.nearby-car:nth-child(7) { bottom: -8px; left: -18px;  animation: car-drift-3 4.7s ease-in-out infinite; }
+.nearby-car--1 { top: -22px;  left: 50%;  animation: car-drift-1 4.2s ease-in-out infinite; }
+.nearby-car--2 { bottom:  2px; right: -24px; animation: car-drift-2 5.1s ease-in-out infinite; }
+.nearby-car--3 { bottom: -10px; left: -20px;  animation: car-drift-3 4.7s ease-in-out infinite; }
 
 .finding-sheet {
   position: absolute;
@@ -2456,8 +2452,3 @@
   text-transform: uppercase;
   letter-spacing: 0.3px;
 }
-
-/* Nearby car positions for radar */
-.nearby-car--1 { top: -18px;  left: 50%;  animation: car-drift-1 4.2s ease-in-out infinite; }
-.nearby-car--2 { bottom:  5px; right: -22px; animation: car-drift-2 5.1s ease-in-out infinite; }
-.nearby-car--3 { bottom: -8px; left: -18px;  animation: car-drift-3 4.7s ease-in-out infinite; }
