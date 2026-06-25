@@ -1749,13 +1749,6 @@
   flex-direction: column;
   gap: 6px;
   position: relative;
-  cursor: pointer;
-  user-select: none;
-}
-
-.schedule-dt-field:hover {
-  background: var(--surface-4);
-  border-color: var(--border-strong);
 }
 
 .schedule-dt-field.sdt-focused {
@@ -1776,54 +1769,31 @@
   pointer-events: none;
 }
 
-/* Visible native input — sits over the display text */
-.schedule-dt-native {
-  position: absolute;
-  inset: 0;
+/* Native date/time input — styled directly */
+.schedule-dt-input {
   width: 100%;
-  height: 100%;
-  opacity: 0;
-  cursor: pointer;
-  font-size: 16px; /* prevent iOS zoom */
-  border: none;
+  padding: 2px 0 0;
   background: transparent;
-}
-
-.schedule-dt-display-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  pointer-events: none;
-}
-
-.schedule-dt-display {
-  font-size: 13px;
+  border: none;
+  outline: none;
+  font-size: 14px;
   font-weight: 600;
+  font-family: var(--font);
   color: var(--text-1);
-  line-height: 1.3;
-  pointer-events: none;
-  min-height: 18px;
-  flex: 1;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
 }
 
-.sdt-chevron {
-  flex-shrink: 0;
+.schedule-dt-input::-webkit-calendar-picker-indicator {
+  cursor: pointer;
   opacity: 0.5;
-  transition: opacity 0.2s, transform 0.2s;
+  padding: 4px;
+  margin-right: -2px;
 }
 
-.schedule-dt-field:hover .sdt-chevron {
+.schedule-dt-input::-webkit-calendar-picker-indicator:hover {
   opacity: 0.8;
-}
-
-.schedule-dt-field.sdt-focused .sdt-chevron {
-  opacity: 1;
-  transform: rotate(180deg);
-}
-
-.sdt-placeholder {
-  font-weight: 500;
-  color: var(--text-4);
 }
 
 /* Upcoming rides list */
