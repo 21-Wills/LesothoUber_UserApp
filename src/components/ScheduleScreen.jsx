@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { Calendar, Clock, DollarSign, CheckCircle, Trash2, Star } from 'lucide-react'
+import { useState, useRef } from 'react'
+import { Calendar, Clock, DollarSign, CheckCircle, Trash2, Star, ChevronDown } from 'lucide-react'
 
 // Pool of drivers to assign to scheduled rides
 const DRIVER_POOL = [
@@ -65,6 +65,19 @@ const ScheduleScreen = () => {
   const [focused, setFocused]         = useState(null)
   const [scheduled, setScheduled]     = useState(UPCOMING)
   const [success, setSuccess]         = useState(false)
+
+  const dateInputRef = useRef(null)
+  const timeInputRef = useRef(null)
+
+  const openDatePicker = () => {
+    dateInputRef.current?.showPicker?.()
+    dateInputRef.current?.focus()
+  }
+
+  const openTimePicker = () => {
+    timeInputRef.current?.showPicker?.()
+    timeInputRef.current?.focus()
+  }
 
   const canSchedule =
     pickup.trim().length > 0 &&
@@ -153,12 +166,16 @@ const ScheduleScreen = () => {
           {/* Date + Time pickers */}
           <div className="schedule-datetime-row">
             {/* Date */}
-            <div className={`schedule-dt-field ${focused === 'date' ? 'sdt-focused' : ''}`}>
+            <div
+              className={`schedule-dt-field ${focused === 'date' ? 'sdt-focused' : ''}`}
+              onClick={openDatePicker}
+            >
               <div className="schedule-dt-label">
                 <Calendar size={13} color="var(--teal)" />
                 <span>Date</span>
               </div>
               <input
+                ref={dateInputRef}
                 type="date"
                 min={tomorrow()}
                 max={maxDate()}
@@ -168,18 +185,25 @@ const ScheduleScreen = () => {
                 onBlur={() => setFocused(null)}
                 className="schedule-dt-native"
               />
-              <p className="schedule-dt-display">
-                {date ? fmtDate(date) : <span className="sdt-placeholder">Select date</span>}
-              </p>
+              <div className="schedule-dt-display-row">
+                <p className="schedule-dt-display">
+                  {date ? fmtDate(date) : <span className="sdt-placeholder">Pick a date</span>}
+                </p>
+                <ChevronDown size={14} color="var(--text-4)" className="sdt-chevron" />
+              </div>
             </div>
 
             {/* Time */}
-            <div className={`schedule-dt-field ${focused === 'time' ? 'sdt-focused' : ''}`}>
+            <div
+              className={`schedule-dt-field ${focused === 'time' ? 'sdt-focused' : ''}`}
+              onClick={openTimePicker}
+            >
               <div className="schedule-dt-label">
                 <Clock size={13} color="var(--blue)" />
                 <span>Time</span>
               </div>
               <input
+                ref={timeInputRef}
                 type="time"
                 value={time}
                 onChange={(e) => setTime(e.target.value)}
@@ -187,9 +211,12 @@ const ScheduleScreen = () => {
                 onBlur={() => setFocused(null)}
                 className="schedule-dt-native"
               />
-              <p className="schedule-dt-display">
-                {time ? fmtTime(time) : <span className="sdt-placeholder">Select time</span>}
-              </p>
+              <div className="schedule-dt-display-row">
+                <p className="schedule-dt-display">
+                  {time ? fmtTime(time) : <span className="sdt-placeholder">Pick a time</span>}
+                </p>
+                <ChevronDown size={14} color="var(--text-4)" className="sdt-chevron" />
+              </div>
             </div>
           </div>
 
