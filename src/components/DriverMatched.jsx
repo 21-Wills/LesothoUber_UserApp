@@ -1,62 +1,14 @@
 import { useState } from 'react'
+import MapBackground from './MapBackground'
 import DriverProfile from './DriverProfile'
-import { Phone, Star, X, ChevronRight, MapPin, Navigation, User } from 'lucide-react'
+import { Clock, Phone, Star, X, ChevronRight } from 'lucide-react'
 
 const DriverMatched = ({ driver, pickup, destination, price, onCancel }) => {
   const [showProfile, setShowProfile] = useState(false)
 
   return (
     <div className="screen matched-screen">
-      {/* ── Single-line journey graphic ── */}
-      <div className="trip-line-visual">
-        {/* Driver node */}
-        <div className="trip-line-node">
-          <div className="trip-line-avatar">
-            <div className="trip-line-avatar-inner">{driver.avatar}</div>
-          </div>
-          <span className="trip-line-node-label">{driver.name.split(' ')[0]}</span>
-        </div>
-
-        {/* Arrow segment: Driver → Pickup */}
-        <div className="trip-line-segment">
-          <div className="trip-line-arrow-bar">
-            <div className="trip-line-dot trip-line-dot--car" />
-            <div className="trip-line-bar trip-line-bar--to-pickup">
-              <div className="trip-line-bar-fill" />
-            </div>
-            <div className="trip-line-dot trip-line-dot--pickup" />
-          </div>
-          <span className="trip-line-seg-label">{driver.distance} · {driver.eta} min</span>
-        </div>
-
-        {/* Pickup node */}
-        <div className="trip-line-node">
-          <div className="trip-line-icon trip-line-icon--pickup">
-            <MapPin size={16} fill="currentColor" color="var(--blue)" />
-          </div>
-          <span className="trip-line-node-label">You</span>
-        </div>
-
-        {/* Arrow segment: Pickup → Destination */}
-        <div className="trip-line-segment">
-          <div className="trip-line-arrow-bar">
-            <div className="trip-line-dot trip-line-dot--start" />
-            <div className="trip-line-bar trip-line-bar--to-dest">
-              <div className="trip-line-bar-fill" />
-            </div>
-            <div className="trip-line-dot trip-line-dot--dest" />
-          </div>
-          <span className="trip-line-seg-label">~15 min trip</span>
-        </div>
-
-        {/* Destination node */}
-        <div className="trip-line-node">
-          <div className="trip-line-icon trip-line-icon--dest">
-            <Navigation size={16} fill="currentColor" color="var(--green)" />
-          </div>
-          <span className="trip-line-node-label">{destination}</span>
-        </div>
-      </div>
+      <MapBackground state="matched" />
 
       {showProfile && (
         <DriverProfile driver={driver} onClose={() => setShowProfile(false)} />
@@ -91,6 +43,33 @@ const DriverMatched = ({ driver, pickup, destination, price, onCancel }) => {
             <ChevronRight size={16} color="var(--text-4)" />
           </div>
         </button>
+
+        {/* ETA card */}
+        <div className="eta-card">
+          <div className="eta-left">
+            <div className="eta-icon">
+              <Clock size={20} strokeWidth={2} />
+            </div>
+            <div>
+              <p className="eta-label">ETA</p>
+              <p className="eta-value">{driver.eta} min away</p>
+            </div>
+          </div>
+          <span className="eta-distance">{driver.distance}</span>
+        </div>
+
+        {/* Route summary */}
+        <div className="route-summary">
+          <div className="trip-row">
+            <div className="trip-dot trip-dot--blue" />
+            <span className="trip-location">{pickup || 'Current Location'}</span>
+          </div>
+          <div className="trip-row">
+            <div className="trip-dot trip-dot--green" />
+            <span className="trip-location">{destination}</span>
+            <span className="trip-price">M {price}.00</span>
+          </div>
+        </div>
 
         {/* Action buttons */}
         <div className="action-buttons">
