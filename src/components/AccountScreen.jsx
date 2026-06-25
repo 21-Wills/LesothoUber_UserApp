@@ -52,7 +52,7 @@ const AccountScreen = ({ user, onSignOut }) => {
         <div className="account-avatar">
           {displayUser.avatar}
           <button className="account-avatar-edit" aria-label="Edit photo">
-            <Edit3 size={12} fill="currentColor" />
+            <Edit3 size={12} />
           </button>
         </div>
         <div className="account-header-info">
@@ -92,13 +92,13 @@ const AccountScreen = ({ user, onSignOut }) => {
               {section.items.map((item) => (
                 <button key={item.label} className="account-menu-item">
                   <div className="account-menu-item-icon">
-                    <item.icon size={17} fill="currentColor" strokeWidth={2} />
+                    <item.icon size={17} />
                   </div>
                   <div className="account-menu-item-info">
                     <span className="account-menu-item-label">{item.label}</span>
                     <span className="account-menu-item-sub">{item.sub}</span>
                   </div>
-                  <ChevronRight size={16} color="var(--text-4)" fill="currentColor" />
+                  <ChevronRight size={16} color="var(--text-4)" />
                 </button>
               ))}
             </div>
@@ -107,7 +107,7 @@ const AccountScreen = ({ user, onSignOut }) => {
 
         {/* Sign out */}
         <button className="account-signout-btn" onClick={onSignOut}>
-          <LogOut size={16} fill="currentColor" />
+          <LogOut size={16} />
           Sign Out
         </button>
       </div>

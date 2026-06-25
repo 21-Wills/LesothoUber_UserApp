@@ -5,11 +5,11 @@ const DriverProfile = ({ driver, onClose }) => {
 
   const stats = [
     { icon: <Star size={16} fill="#F59E0B" color="#F59E0B" />, label: 'Rating',      value: driver.rating,                      unit: '/ 5.0' },
-    { icon: <Car size={16} color="var(--teal)" fill="currentColor" />,             label: 'Total Trips',  value: driver.trips.toLocaleString(),       unit: 'rides'  },
-    { icon: <Route size={16} color="var(--blue)" fill="currentColor" />,           label: 'Total KM',     value: driver.totalKm.toLocaleString(),     unit: 'km'     },
-    { icon: <Calendar size={16} color="var(--text-3)" fill="currentColor" />,      label: 'Driving Since', value: driver.joinedYear,                 unit: `(${yearsActive}y)` },
-    { icon: <MessageCircle size={16} color="var(--green)" fill="currentColor" />,  label: 'Response Rate', value: `${driver.responseRate}%`,         unit: ''       },
-    { icon: <CheckCircle size={16} color="var(--green)" fill="currentColor" />,    label: 'Completion',    value: `${driver.completionRate}%`,       unit: ''       },
+    { icon: <Car size={16} color="var(--teal)" />,             label: 'Total Trips',  value: driver.trips.toLocaleString(),       unit: 'rides'  },
+    { icon: <Route size={16} color="var(--blue)" />,           label: 'Total KM',     value: driver.totalKm.toLocaleString(),     unit: 'km'     },
+    { icon: <Calendar size={16} color="var(--text-3)" />,      label: 'Driving Since', value: driver.joinedYear,                 unit: `(${yearsActive}y)` },
+    { icon: <MessageCircle size={16} color="var(--green)" />,  label: 'Response Rate', value: `${driver.responseRate}%`,         unit: ''       },
+    { icon: <CheckCircle size={16} color="var(--green)" />,    label: 'Completion',    value: `${driver.completionRate}%`,       unit: ''       },
   ]
 
   return (
@@ -36,18 +36,18 @@ const DriverProfile = ({ driver, onClose }) => {
             <p className="profile-vehicle">{driver.color} {driver.vehicle} · {driver.plate}</p>
             <div className="profile-verified-row">
               <span className="verified-badge">
-                <CheckCircle size={12} fill="currentColor" />
+                <CheckCircle size={12} />
                 Verified Driver
               </span>
               <span className="lang-badge">
-                <Languages size={12} fill="currentColor" />
+                <Languages size={12} />
                 {driver.languages.join(' · ')}
               </span>
             </div>
           </div>
 
           <button className="profile-close-btn" onClick={onClose} aria-label="Close">
-            <X size={18} fill="currentColor" />
+            <X size={18} />
           </button>
         </div>
 
@@ -84,7 +84,7 @@ const DriverProfile = ({ driver, onClose }) => {
                       ))}
                     </div>
                   </div>
-                  <ThumbsUp size={14} color="var(--text-4)" fill="currentColor" />
+                  <ThumbsUp size={14} color="var(--text-4)" />
                 </div>
                 <p className="review-text">"{r.text}"</p>
               </div>

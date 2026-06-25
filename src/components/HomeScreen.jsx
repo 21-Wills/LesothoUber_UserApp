@@ -75,7 +75,7 @@ const HomeScreen = ({ pickup, setPickup, destination, setDestination, price, onR
         {canRequest && (
           <div className="price-card">
             <div className="price-card__icon">
-              <DollarSign size={20} fill="currentColor" strokeWidth={1.5} />
+              <DollarSign size={20} />
             </div>
             <div className="price-card__info">
               <p className="price-label">Estimated Fare</p>
@@ -96,7 +96,7 @@ const HomeScreen = ({ pickup, setPickup, destination, setDestination, price, onR
 
         {/* Safety note */}
         <p className="safety-note">
-          <Shield size={12} fill="currentColor" />
+          <Shield size={12} />
           Fixed price · No surge · Verified drivers
         </p>
       </div>

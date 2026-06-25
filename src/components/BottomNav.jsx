@@ -19,7 +19,7 @@ const BottomNav = ({ active, onChange, notifCount = 2 }) => (
             onClick={() => onChange(id)}
           >
             <div className="floating-nav__icon-wrap">
-              <Icon size={22} strokeWidth={isActive ? 3 : 2.5} fill={isActive ? 'currentColor' : 'none'} />
+              <Icon size={22} strokeWidth={isActive ? 2.2 : 1.8} />
               {id === 'notifications' && notifCount > 0 && (
                 <span className="floating-nav__badge">{notifCount}</span>
               )}
