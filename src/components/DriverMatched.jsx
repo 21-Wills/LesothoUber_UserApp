@@ -1,61 +1,60 @@
 import { useState } from 'react'
 import DriverProfile from './DriverProfile'
-import { Phone, Star, X, ChevronRight, MapPin, Navigation } from 'lucide-react'
+import { Phone, Star, X, ChevronRight, MapPin, Navigation, User } from 'lucide-react'
 
 const DriverMatched = ({ driver, pickup, destination, price, onCancel }) => {
   const [showProfile, setShowProfile] = useState(false)
 
   return (
     <div className="screen matched-screen">
-      {/* ── Journey visual (replaces map) ── */}
-      <div className="journey-visual">
-        <div className="journey-card">
-          {/* Pickup */}
-          <div className="journey-node">
-            <div className="journey-icon journey-icon--pickup">
-              <MapPin size={20} fill="currentColor" color="var(--blue)" />
-            </div>
-            <div className="journey-info">
-              <p className="journey-label">Pickup</p>
-              <p className="journey-location">{pickup || 'Current Location'}</p>
-            </div>
+      {/* ── Single-line journey graphic ── */}
+      <div className="trip-line-visual">
+        {/* Driver node */}
+        <div className="trip-line-node">
+          <div className="trip-line-avatar">
+            <div className="trip-line-avatar-inner">{driver.avatar}</div>
           </div>
+          <span className="trip-line-node-label">{driver.name.split(' ')[0]}</span>
+        </div>
 
-          {/* Connector: Pickup → Driver */}
-          <div className="journey-connector">
-            <div className="journey-line" />
-            <span className="journey-segment-label">{driver.distance} · {driver.eta} min</span>
-            <div className="journey-line" />
+        {/* Arrow segment: Driver → Pickup */}
+        <div className="trip-line-segment">
+          <div className="trip-line-arrow-bar">
+            <div className="trip-line-dot trip-line-dot--car" />
+            <div className="trip-line-bar trip-line-bar--to-pickup">
+              <div className="trip-line-bar-fill" />
+            </div>
+            <div className="trip-line-dot trip-line-dot--pickup" />
           </div>
+          <span className="trip-line-seg-label">{driver.distance} · {driver.eta} min</span>
+        </div>
 
-          {/* Driver */}
-          <div className="journey-node journey-node--driver">
-            <div className="journey-icon journey-icon--driver">
-              <div className="journey-driver-avatar">{driver.avatar}</div>
-            </div>
-            <div className="journey-info">
-              <p className="journey-label">{driver.name}</p>
-              <p className="journey-sublabel">{driver.color} {driver.vehicle} · {driver.plate}</p>
-            </div>
+        {/* Pickup node */}
+        <div className="trip-line-node">
+          <div className="trip-line-icon trip-line-icon--pickup">
+            <MapPin size={16} fill="currentColor" color="var(--blue)" />
           </div>
+          <span className="trip-line-node-label">You</span>
+        </div>
 
-          {/* Connector: Driver → Destination */}
-          <div className="journey-connector">
-            <div className="journey-line" />
-            <span className="journey-segment-label">~15 min trip</span>
-            <div className="journey-line" />
+        {/* Arrow segment: Pickup → Destination */}
+        <div className="trip-line-segment">
+          <div className="trip-line-arrow-bar">
+            <div className="trip-line-dot trip-line-dot--start" />
+            <div className="trip-line-bar trip-line-bar--to-dest">
+              <div className="trip-line-bar-fill" />
+            </div>
+            <div className="trip-line-dot trip-line-dot--dest" />
           </div>
+          <span className="trip-line-seg-label">~15 min trip</span>
+        </div>
 
-          {/* Destination */}
-          <div className="journey-node">
-            <div className="journey-icon journey-icon--dest">
-              <Navigation size={20} fill="currentColor" color="var(--green)" />
-            </div>
-            <div className="journey-info">
-              <p className="journey-label">Destination</p>
-              <p className="journey-location">{destination}</p>
-            </div>
+        {/* Destination node */}
+        <div className="trip-line-node">
+          <div className="trip-line-icon trip-line-icon--dest">
+            <Navigation size={16} fill="currentColor" color="var(--green)" />
           </div>
+          <span className="trip-line-node-label">{destination}</span>
         </div>
       </div>
 

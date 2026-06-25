@@ -1,52 +1,31 @@
-import { Car3D } from './VehicleIcons'
-import { MapPin, Navigation } from 'lucide-react'
+import { Car3D, Taxi3D } from './VehicleIcons'
 
 const FindingDriver = ({ pickup, destination, price, onCancel }) => {
   return (
     <div className="screen finding-screen">
-      {/* ── Journey visual with radar overlay ── */}
-      <div className="journey-visual finding-visual">
-        <div className="journey-card">
+      {/* ── Radar animation ── */}
+      <div className="radar-container">
+        <div className="radar-rings">
+          <div className="radar-ring" />
+          <div className="radar-ring" />
+          <div className="radar-ring" />
+          <div className="radar-ring" />
 
-          {/* Pickup */}
-          <div className="journey-node">
-            <div className="journey-icon journey-icon--pickup">
-              <MapPin size={20} fill="currentColor" color="var(--blue)" />
-            </div>
-            <div className="journey-info">
-              <p className="journey-label">Pickup</p>
-              <p className="journey-location">{pickup || 'Current Location'}</p>
-            </div>
+          {/* Center pin */}
+          <div className="radar-center">
+            <Car3D size={28} />
           </div>
 
-          {/* Searching connector with radar */}
-          <div className="journey-connector journey-connector--searching">
-            <div className="journey-line" />
-            <div className="journey-radar-badge">
-              <div className="journey-radar-rings">
-                <div className="journey-radar-ring" />
-                <div className="journey-radar-ring" />
-                <div className="journey-radar-ring" />
-              </div>
-              <div className="journey-radar-center">
-                <Car3D size={22} />
-              </div>
-            </div>
-            <span className="journey-segment-label">Searching for a driver...</span>
-            <div className="journey-line" />
+          {/* Orbiting vehicles */}
+          <div className="nearby-car nearby-car--1">
+            <Car3D size={18} />
           </div>
-
-          {/* Destination */}
-          <div className="journey-node">
-            <div className="journey-icon journey-icon--dest">
-              <Navigation size={20} fill="currentColor" color="var(--green)" />
-            </div>
-            <div className="journey-info">
-              <p className="journey-label">Destination</p>
-              <p className="journey-location">{destination}</p>
-            </div>
+          <div className="nearby-car nearby-car--2">
+            <Taxi3D size={22} />
           </div>
-
+          <div className="nearby-car nearby-car--3">
+            <Car3D size={18} />
+          </div>
         </div>
       </div>
 

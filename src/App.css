@@ -2303,7 +2303,159 @@
 }
 
 /* =====================
-   JOURNEY VISUAL (replaces map)
+   TRIP LINE VISUAL (matched screen)
+   ===================== */
+.trip-line-visual {
+  position: absolute;
+  inset: 0;
+  bottom: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  padding: 32px 28px;
+  z-index: 1;
+}
+
+.trip-line-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.trip-line-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--r-full);
+  background: linear-gradient(135deg, #0D9488, #2563EB);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 12px rgba(13,148,136,0.3);
+}
+
+.trip-line-avatar-inner {
+  font-size: 18px;
+  font-weight: 800;
+  color: white;
+}
+
+.trip-line-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--r-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.trip-line-icon--pickup {
+  background: rgba(37, 99, 235, 0.1);
+}
+
+.trip-line-icon--dest {
+  background: rgba(22, 163, 74, 0.1);
+}
+
+.trip-line-node-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-2);
+  text-align: center;
+  max-width: 100px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Arrow segment */
+.trip-line-segment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 0;
+}
+
+.trip-line-arrow-bar {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.trip-line-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.trip-line-dot--car {
+  background: var(--teal);
+  box-shadow: 0 0 0 3px rgba(13,148,136,0.2);
+}
+
+.trip-line-dot--pickup {
+  background: var(--blue);
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.2);
+}
+
+.trip-line-dot--start {
+  background: var(--blue);
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.2);
+}
+
+.trip-line-dot--dest {
+  background: var(--green);
+  box-shadow: 0 0 0 3px rgba(22,163,74,0.2);
+  border-radius: 2px;
+  transform: rotate(45deg);
+  width: 9px;
+  height: 9px;
+}
+
+.trip-line-bar {
+  width: 50px;
+  height: 3px;
+  background: var(--surface-3);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+.trip-line-bar-fill {
+  position: absolute;
+  inset: 0;
+  background: var(--border-strong);
+  border-radius: 2px;
+  animation: barFill 1.8s var(--ease-out) infinite;
+}
+
+.trip-line-bar--to-pickup .trip-line-bar-fill {
+  animation-delay: 0s;
+  background: var(--teal);
+}
+
+.trip-line-bar--to-dest .trip-line-bar-fill {
+  animation-delay: 0.6s;
+  background: var(--green);
+}
+
+@keyframes barFill {
+  0% { transform: translateX(-100%); }
+  60% { transform: translateX(0); }
+  100% { transform: translateX(0); }
+}
+
+.trip-line-seg-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-4);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
    ===================== */
 .journey-visual {
   position: absolute;
@@ -2470,3 +2622,8 @@
 .matched-screen .journey-visual {
   bottom: 140px;
 }
+
+/* Nearby car positions for radar */
+.nearby-car--1 { top: -18px;  left: 50%;  animation: car-drift-1 4.2s ease-in-out infinite; }
+.nearby-car--2 { bottom:  5px; right: -22px; animation: car-drift-2 5.1s ease-in-out infinite; }
+.nearby-car--3 { bottom: -8px; left: -18px;  animation: car-drift-3 4.7s ease-in-out infinite; }
