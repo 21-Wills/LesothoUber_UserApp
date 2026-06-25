@@ -39,41 +39,45 @@ const MENU_SECTIONS = [
   },
 ]
 
-const AccountScreen = () => {
+const AccountScreen = ({ user }) => {
+  const displayUser = user?.name
+    ? { ...MOCK_USER, ...user, avatar: user.avatar || user.name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2) }
+    : MOCK_USER
+
   return (
     <div className="tab-screen account-screen">
 
       {/* Header */}
       <div className="account-header">
         <div className="account-avatar">
-          {MOCK_USER.avatar}
+          {displayUser.avatar}
           <button className="account-avatar-edit" aria-label="Edit photo">
             <Edit3 size={12} />
           </button>
         </div>
         <div className="account-header-info">
-          <h1 className="account-name">{MOCK_USER.name}</h1>
-          <p className="account-email">{MOCK_USER.phone}</p>
-          <p className="account-since">Member since {MOCK_USER.memberSince}</p>
+          <h1 className="account-name">{displayUser.name}</h1>
+          <p className="account-email">{displayUser.phone}</p>
+          <p className="account-since">Member since {displayUser.memberSince}</p>
         </div>
       </div>
 
       {/* Stats row */}
       <div className="account-stats">
         <div className="account-stat">
-          <span className="account-stat-value">{MOCK_USER.totalRides}</span>
+          <span className="account-stat-value">{displayUser.totalRides}</span>
           <span className="account-stat-label">Rides</span>
         </div>
         <div className="account-stat-divider" />
         <div className="account-stat">
-          <span className="account-stat-value">M {MOCK_USER.totalSpent.toLocaleString()}</span>
+          <span className="account-stat-value">M {displayUser.totalSpent.toLocaleString()}</span>
           <span className="account-stat-label">Spent</span>
         </div>
         <div className="account-stat-divider" />
         <div className="account-stat">
           <div className="account-stat-rating">
             <Star size={13} fill="#F59E0B" color="#F59E0B" />
-            <span className="account-stat-value">{MOCK_USER.rating}</span>
+            <span className="account-stat-value">{displayUser.rating}</span>
           </div>
           <span className="account-stat-label">Your Rating</span>
         </div>

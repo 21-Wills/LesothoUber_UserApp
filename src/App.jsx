@@ -7,6 +7,7 @@ import DriverMatched from './components/DriverMatched'
 import AccountScreen from './components/AccountScreen'
 import NotificationsScreen from './components/NotificationsScreen'
 import BottomNav from './components/BottomNav'
+import AuthScreen from './components/AuthScreen'
 import './App.css'
 
 const FIXED_PRICE = 45
@@ -40,6 +41,8 @@ const MOCK_DRIVER = {
 const NAV_TABS = ['home', 'book', 'notifications', 'account']
 
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [user, setUser] = useState(null)
   const [tab, setTab] = useState('home')
   const [rideFlow, setRideFlow] = useState('idle') // 'idle' | 'finding' | 'matched'
   const [pickup, setPickup] = useState('Current Location')
@@ -63,14 +66,22 @@ function App() {
     setTab('book')
   }
 
+  const handleSignIn = (userData) => {
+    setUser(userData)
+    setIsAuthenticated(true)
+  }
+
   useEffect(() => () => { if (matchTimer) clearTimeout(matchTimer) }, [matchTimer])
 
   const inRideFlow = rideFlow !== 'idle'
 
   return (
     <div className="app">
+      {/* ── Auth gate ── */}
+      {!isAuthenticated && <AuthScreen onSignIn={handleSignIn} />}
+
       {/* ── Ride flow screens (full-screen, no nav) ── */}
-      {inRideFlow && rideFlow === 'finding' && (
+      {isAuthenticated && inRideFlow && rideFlow === 'finding' && (
         <FindingDriver
           pickup={pickup}
           destination={destination}
@@ -78,7 +89,7 @@ function App() {
           onCancel={cancelRide}
         />
       )}
-      {inRideFlow && rideFlow === 'matched' && (
+      {isAuthenticated && inRideFlow && rideFlow === 'matched' && (
         <DriverMatched
           driver={MOCK_DRIVER}
           pickup={pickup}
@@ -89,7 +100,7 @@ function App() {
       )}
 
       {/* ── Tabbed screens (with bottom nav) ── */}
-      {!inRideFlow && (
+      {isAuthenticated && !inRideFlow && (
         <>
           {tab === 'home' && (
             <HomeDashboard
@@ -103,7 +114,7 @@ function App() {
           )}
           {tab === 'book' && <ScheduleScreen />}
           {tab === 'notifications' && <NotificationsScreen />}
-          {tab === 'account'       && <AccountScreen />}
+          {tab === 'account'       && <AccountScreen user={user} />}
 
           <BottomNav
             active={tab}
