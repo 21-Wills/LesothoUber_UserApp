@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Calendar, Clock, DollarSign, CheckCircle, Trash2, Star, Car } from 'lucide-react'
+import { Calendar, Clock, DollarSign, CheckCircle, Trash2, Star } from 'lucide-react'
 
 // Pool of drivers to assign to scheduled rides
 const DRIVER_POOL = [

@@ -1,5 +1,5 @@
 import MapBackground from './MapBackground'
-import { Car } from 'lucide-react'
+import { Car3D, Taxi3D } from './VehicleIcons'
 
 const FindingDriver = ({ pickup, destination, price, onCancel }) => {
   return (
@@ -14,20 +14,20 @@ const FindingDriver = ({ pickup, destination, price, onCancel }) => {
           <div className="radar-ring" />
           <div className="radar-ring" />
 
-          {/* Center icon */}
+          {/* Center icon – 3D car */}
           <div className="radar-center">
-            <Car size={24} color="var(--teal)" strokeWidth={1.8} />
+            <Car3D size={28} />
           </div>
 
-          {/* Nearby car dots */}
+          {/* Nearby vehicle dots */}
           <div className="nearby-car">
-            <Car size={14} color="var(--text-2)" />
+            <Car3D size={18} />
           </div>
           <div className="nearby-car">
-            <Car size={14} color="var(--text-2)" />
+            <Taxi3D size={22} />
           </div>
           <div className="nearby-car">
-            <Car size={14} color="var(--text-2)" />
+            <Car3D size={18} />
           </div>
         </div>
       </div>

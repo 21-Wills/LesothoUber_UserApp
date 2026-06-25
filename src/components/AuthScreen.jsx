@@ -80,7 +80,7 @@ const AuthScreen = ({ onSignIn }) => {
         {/* Logo */}
         <div className="auth-logo">
           <div className="auth-logo-icon">
-            <MapPin size={22} color="#fff" fill="#fff" fillOpacity={0.2} />
+            <MapPin size={22} color="#FFFFFF" fill="#FFFFFF" fillOpacity={0.15} />
           </div>
           <span className="auth-logo-text">Leeto</span>
         </div>

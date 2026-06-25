@@ -33,6 +33,43 @@ const MapBackground = ({ state = 'idle' }) => {
             <stop offset="0%" stopColor="#0D9488" stopOpacity="0.07" />
             <stop offset="100%" stopColor="#F5F5F7" stopOpacity="0" />
           </radialGradient>
+
+          {/* 3D Vehicle gradients */}
+          <linearGradient id="carBody" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#D4D4DC" />
+            <stop offset="50%" stopColor="#C0C0CB" />
+            <stop offset="100%" stopColor="#A8A8B4" />
+          </linearGradient>
+          <linearGradient id="carRoof" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#E8E8EE" />
+            <stop offset="100%" stopColor="#D0D0DA" />
+          </linearGradient>
+          <linearGradient id="carWindshield" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#2D4A7A" />
+            <stop offset="100%" stopColor="#1A2D4A" />
+          </linearGradient>
+          <linearGradient id="taxiBody" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#E8E4D8" />
+            <stop offset="50%" stopColor="#D8D2C0" />
+            <stop offset="100%" stopColor="#C0B898" />
+          </linearGradient>
+          <linearGradient id="taxiStripe" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#2563EB" />
+            <stop offset="50%" stopColor="#1D4ED8" />
+            <stop offset="100%" stopColor="#1E3A8A" />
+          </linearGradient>
+          <linearGradient id="taxiRoof" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#F0EDE5" />
+            <stop offset="100%" stopColor="#D8D2C0" />
+          </linearGradient>
+          <radialGradient id="wheelGrad" cx="40%" cy="35%">
+            <stop offset="0%" stopColor="#555" />
+            <stop offset="60%" stopColor="#333" />
+            <stop offset="100%" stopColor="#1A1A1A" />
+          </radialGradient>
+          <filter id="carShadow" x="-20%" y="-10%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="2" stdDeviation="2" floodColor="#000" floodOpacity="0.25" />
+          </filter>
         </defs>
 
         {/* Base */}
@@ -135,11 +172,11 @@ const MapBackground = ({ state = 'idle' }) => {
           </>
         )}
 
-        {/* ── Nearby car icons (visible during finding) ── */}
+        {/* ── Nearby vehicle icons (visible during finding) ── */}
         {isFinding && (
           <>
-            {/* Car 1 */}
-            <g opacity="0.7">
+            {/* Car 1 – sedan */}
+            <g opacity="0.75">
               <animateTransform
                 attributeName="transform"
                 type="translate"
@@ -147,27 +184,65 @@ const MapBackground = ({ state = 'idle' }) => {
                 dur="4.2s"
                 repeatCount="indefinite"
               />
-              <rect x="130" y="148" width="22" height="16" rx="4" fill="#E2E2E8" stroke="#D0D0D8" strokeWidth="1" />
-              <rect x="133" y="143" width="16" height="8"  rx="2" fill="#EBEBF1" />
-              <circle cx="134" cy="165" r="3" fill="#C0C0C8" />
-              <circle cx="150" cy="165" r="3" fill="#C0C0C8" />
+              {/* Shadow */}
+              <ellipse cx="148" cy="163" rx="14" ry="1.5" fill="#000" opacity="0.1" />
+              {/* Body */}
+              <rect x="132" y="148" width="32" height="13" rx="6" fill="url(#carBody)" filter="url(#carShadow)" stroke="rgba(0,0,0,0.1)" strokeWidth="0.5" />
+              {/* Roof */}
+              <rect x="140" y="145.5" width="16" height="10" rx="4.5" fill="url(#carRoof)" stroke="rgba(0,0,0,0.06)" strokeWidth="0.5" />
+              {/* Windshield */}
+              <rect x="153" y="147" width="7" height="7" rx="2.5" fill="url(#carWindshield)" opacity="0.85" />
+              {/* Rear window */}
+              <rect x="136" y="147" width="5" height="7" rx="2" fill="url(#carWindshield)" opacity="0.7" />
+              {/* Wheels */}
+              <circle cx="157" cy="161.5" r="2.8" fill="url(#wheelGrad)" stroke="#222" strokeWidth="0.5" />
+              <circle cx="157" cy="161.5" r="1.2" fill="#444" />
+              <circle cx="139" cy="161.5" r="2.8" fill="url(#wheelGrad)" stroke="#222" strokeWidth="0.5" />
+              <circle cx="139" cy="161.5" r="1.2" fill="#444" />
+              {/* Rear lights */}
+              <rect x="132" y="151" width="2" height="5" rx="1" fill="#EF4444" opacity="0.85" />
+              {/* Headlights */}
+              <rect x="162" y="150" width="1.5" height="4" rx="0.8" fill="#FDE68A" opacity="0.8" />
+              <rect x="162" y="155" width="1.5" height="4" rx="0.8" fill="#FDE68A" opacity="0.8" />
             </g>
-            {/* Car 2 */}
-            <g opacity="0.6">
+            {/* Taxi 2 – minibus 4+1 */}
+            <g opacity="0.72">
               <animateTransform
                 attributeName="transform"
                 type="translate"
                 values="20,-15; -15,20; -20,-10; 20,-15"
-                dur="5.1s"
+                dur="5.8s"
                 repeatCount="indefinite"
               />
-              <rect x="250" y="310" width="22" height="16" rx="4" fill="#E2E2E8" stroke="#D0D0D8" strokeWidth="1" />
-              <rect x="253" y="305" width="16" height="8"  rx="2" fill="#EBEBF1" />
-              <circle cx="254" cy="327" r="3" fill="#C0C0C8" />
-              <circle cx="270" cy="327" r="3" fill="#C0C0C8" />
+              {/* Shadow */}
+              <ellipse cx="274" cy="327" rx="18" ry="1.5" fill="#000" opacity="0.1" />
+              {/* Body */}
+              <rect x="252" y="311" width="44" height="14" rx="6.5" fill="url(#taxiBody)" filter="url(#carShadow)" stroke="rgba(0,0,0,0.1)" strokeWidth="0.5" />
+              {/* Blue stripe */}
+              <rect x="252" y="316" width="44" height="4.5" fill="url(#taxiStripe)" opacity="0.85" />
+              {/* Taxi sign */}
+              <rect x="268" y="307.5" width="12" height="4" rx="1.5" fill="#FBBF24" stroke="rgba(0,0,0,0.15)" strokeWidth="0.5" />
+              <text x="274" y="310.8" textAnchor="middle" fontSize="3" fontWeight="700" fill="#1A1A1A" fontFamily="Inter, sans-serif">4+1</text>
+              {/* Roof */}
+              <rect x="258" y="308.5" width="32" height="9" rx="4.5" fill="url(#taxiRoof)" stroke="rgba(0,0,0,0.06)" strokeWidth="0.5" />
+              {/* Windshield + side windows */}
+              <rect x="285" y="310" width="8" height="6" rx="2.5" fill="url(#carWindshield)" opacity="0.85" />
+              <rect x="264" y="310" width="6" height="6" rx="1.5" fill="url(#carWindshield)" opacity="0.75" />
+              <rect x="271.5" y="310" width="6" height="6" rx="1.5" fill="url(#carWindshield)" opacity="0.75" />
+              <rect x="279" y="310" width="4.5" height="6" rx="1.5" fill="url(#carWindshield)" opacity="0.7" />
+              {/* Wheels */}
+              <circle cx="288" cy="325" r="3" fill="url(#wheelGrad)" stroke="#222" strokeWidth="0.5" />
+              <circle cx="288" cy="325" r="1.4" fill="#444" />
+              <circle cx="260" cy="325" r="3" fill="url(#wheelGrad)" stroke="#222" strokeWidth="0.5" />
+              <circle cx="260" cy="325" r="1.4" fill="#444" />
+              {/* Rear lights */}
+              <rect x="252" y="314" width="2" height="5" rx="1" fill="#EF4444" opacity="0.85" />
+              {/* Headlights */}
+              <rect x="294" y="313" width="1.5" height="3.5" rx="0.8" fill="#FDE68A" opacity="0.8" />
+              <rect x="294" y="319.5" width="1.5" height="3.5" rx="0.8" fill="#FDE68A" opacity="0.8" />
             </g>
-            {/* Car 3 */}
-            <g opacity="0.5">
+            {/* Car 3 – sedan */}
+            <g opacity="0.6">
               <animateTransform
                 attributeName="transform"
                 type="translate"
@@ -175,10 +250,26 @@ const MapBackground = ({ state = 'idle' }) => {
                 dur="4.7s"
                 repeatCount="indefinite"
               />
-              <rect x="60" y="360" width="22" height="16" rx="4" fill="#E2E2E8" stroke="#D0D0D8" strokeWidth="1" />
-              <rect x="63" y="355" width="16" height="8"  rx="2" fill="#EBEBF1" />
-              <circle cx="64" cy="377" r="3" fill="#C0C0C8" />
-              <circle cx="80" cy="377" r="3" fill="#C0C0C8" />
+              {/* Shadow */}
+              <ellipse cx="78" cy="377" rx="14" ry="1.5" fill="#000" opacity="0.1" />
+              {/* Body */}
+              <rect x="62" y="362" width="32" height="13" rx="6" fill="url(#carBody)" filter="url(#carShadow)" stroke="rgba(0,0,0,0.1)" strokeWidth="0.5" />
+              {/* Roof */}
+              <rect x="70" y="359.5" width="16" height="10" rx="4.5" fill="url(#carRoof)" stroke="rgba(0,0,0,0.06)" strokeWidth="0.5" />
+              {/* Windshield */}
+              <rect x="83" y="361" width="7" height="7" rx="2.5" fill="url(#carWindshield)" opacity="0.85" />
+              {/* Rear window */}
+              <rect x="66" y="361" width="5" height="7" rx="2" fill="url(#carWindshield)" opacity="0.7" />
+              {/* Wheels */}
+              <circle cx="87" cy="375.5" r="2.8" fill="url(#wheelGrad)" stroke="#222" strokeWidth="0.5" />
+              <circle cx="87" cy="375.5" r="1.2" fill="#444" />
+              <circle cx="69" cy="375.5" r="2.8" fill="url(#wheelGrad)" stroke="#222" strokeWidth="0.5" />
+              <circle cx="69" cy="375.5" r="1.2" fill="#444" />
+              {/* Rear lights */}
+              <rect x="62" y="365" width="2" height="5" rx="1" fill="#EF4444" opacity="0.85" />
+              {/* Headlights */}
+              <rect x="92" y="364" width="1.5" height="4" rx="0.8" fill="#FDE68A" opacity="0.8" />
+              <rect x="92" y="369" width="1.5" height="4" rx="0.8" fill="#FDE68A" opacity="0.8" />
             </g>
           </>
         )}
