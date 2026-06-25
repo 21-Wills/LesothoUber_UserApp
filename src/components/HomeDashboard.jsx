@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Car, Clock, Star, ArrowRight, Zap, DollarSign, Shield } from 'lucide-react'
+import { Car, Clock, Star, ArrowRight, Zap, Shield } from 'lucide-react'
 
 const QUICK_DESTINATIONS = [
   { label: 'Home',        sub: '14 Moshoeshoe Rd', icon: '🏠' },
@@ -79,17 +79,6 @@ const HomeDashboard = ({ pickup, setPickup, destination, setDestination, price, 
               </div>
             </div>
           </div>
-
-          {canRequest && (
-            <div className="price-card">
-              <div className="price-card__icon"><DollarSign size={20} /></div>
-              <div className="price-card__info">
-                <p className="price-label">Estimated Fare</p>
-                <p className="price-value">M {price}.00</p>
-              </div>
-              <span className="price-card__badge">Fixed</span>
-            </div>
-          )}
 
           <button
             className={`request-btn ${canRequest ? 'request-btn--active' : 'request-btn--disabled'}`}

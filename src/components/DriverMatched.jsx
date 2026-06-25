@@ -1,14 +1,63 @@
 import { useState } from 'react'
-import MapBackground from './MapBackground'
 import DriverProfile from './DriverProfile'
-import { Clock, Phone, Star, X, ChevronRight } from 'lucide-react'
+import { Phone, Star, X, ChevronRight, MapPin, Navigation } from 'lucide-react'
 
 const DriverMatched = ({ driver, pickup, destination, price, onCancel }) => {
   const [showProfile, setShowProfile] = useState(false)
 
   return (
     <div className="screen matched-screen">
-      <MapBackground state="matched" />
+      {/* ── Journey visual (replaces map) ── */}
+      <div className="journey-visual">
+        <div className="journey-card">
+          {/* Pickup */}
+          <div className="journey-node">
+            <div className="journey-icon journey-icon--pickup">
+              <MapPin size={20} fill="currentColor" color="var(--blue)" />
+            </div>
+            <div className="journey-info">
+              <p className="journey-label">Pickup</p>
+              <p className="journey-location">{pickup || 'Current Location'}</p>
+            </div>
+          </div>
+
+          {/* Connector: Pickup → Driver */}
+          <div className="journey-connector">
+            <div className="journey-line" />
+            <span className="journey-segment-label">{driver.distance} · {driver.eta} min</span>
+            <div className="journey-line" />
+          </div>
+
+          {/* Driver */}
+          <div className="journey-node journey-node--driver">
+            <div className="journey-icon journey-icon--driver">
+              <div className="journey-driver-avatar">{driver.avatar}</div>
+            </div>
+            <div className="journey-info">
+              <p className="journey-label">{driver.name}</p>
+              <p className="journey-sublabel">{driver.color} {driver.vehicle} · {driver.plate}</p>
+            </div>
+          </div>
+
+          {/* Connector: Driver → Destination */}
+          <div className="journey-connector">
+            <div className="journey-line" />
+            <span className="journey-segment-label">~15 min trip</span>
+            <div className="journey-line" />
+          </div>
+
+          {/* Destination */}
+          <div className="journey-node">
+            <div className="journey-icon journey-icon--dest">
+              <Navigation size={20} fill="currentColor" color="var(--green)" />
+            </div>
+            <div className="journey-info">
+              <p className="journey-label">Destination</p>
+              <p className="journey-location">{destination}</p>
+            </div>
+          </div>
+        </div>
+      </div>
 
       {showProfile && (
         <DriverProfile driver={driver} onClose={() => setShowProfile(false)} />
@@ -43,33 +92,6 @@ const DriverMatched = ({ driver, pickup, destination, price, onCancel }) => {
             <ChevronRight size={16} color="var(--text-4)" />
           </div>
         </button>
-
-        {/* ETA card */}
-        <div className="eta-card">
-          <div className="eta-left">
-            <div className="eta-icon">
-              <Clock size={20} strokeWidth={2} />
-            </div>
-            <div>
-              <p className="eta-label">ETA</p>
-              <p className="eta-value">{driver.eta} min away</p>
-            </div>
-          </div>
-          <span className="eta-distance">{driver.distance}</span>
-        </div>
-
-        {/* Route summary */}
-        <div className="route-summary">
-          <div className="trip-row">
-            <div className="trip-dot trip-dot--blue" />
-            <span className="trip-location">{pickup || 'Current Location'}</span>
-          </div>
-          <div className="trip-row">
-            <div className="trip-dot trip-dot--green" />
-            <span className="trip-location">{destination}</span>
-            <span className="trip-price">M {price}.00</span>
-          </div>
-        </div>
 
         {/* Action buttons */}
         <div className="action-buttons">

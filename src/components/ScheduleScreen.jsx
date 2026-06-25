@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Calendar, Clock, DollarSign, CheckCircle, Trash2, Star } from 'lucide-react'
+import { Calendar, Clock, CheckCircle, Trash2, Star } from 'lucide-react'
 
 // Pool of drivers to assign to scheduled rides
 const DRIVER_POOL = [
@@ -187,17 +187,6 @@ const ScheduleScreen = () => {
             </div>
           </div>
 
-          {/* Price card */}
-          {canSchedule && (
-            <div className="price-card" style={{ marginTop: 14, marginBottom: 0 }}>
-              <div className="price-card__icon"><DollarSign size={20} /></div>
-              <div className="price-card__info">
-                <p className="price-label">Estimated Fare</p>
-                <p className="price-value">M 45.00</p>
-              </div>
-              <span className="price-card__badge">Fixed</span>
-            </div>
-          )}
         </div>
 
         {/* CTA */}

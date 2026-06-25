@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import MapBackground from './MapBackground'
-import { MapPin, Navigation, DollarSign, Shield } from 'lucide-react'
+import { MapPin, Navigation, Shield } from 'lucide-react'
 
 const HomeScreen = ({ pickup, setPickup, destination, setDestination, price, onRequest }) => {
   const [focused, setFocused] = useState(null)
@@ -70,20 +70,6 @@ const HomeScreen = ({ pickup, setPickup, destination, setDestination, price, onR
             </div>
           </div>
         </div>
-
-        {/* Price Card */}
-        {canRequest && (
-          <div className="price-card">
-            <div className="price-card__icon">
-              <DollarSign size={20} />
-            </div>
-            <div className="price-card__info">
-              <p className="price-label">Estimated Fare</p>
-              <p className="price-value">M {price}.00</p>
-            </div>
-            <span className="price-card__badge">Fixed</span>
-          </div>
-        )}
 
         {/* CTA */}
         <button
