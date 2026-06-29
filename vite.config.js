@@ -37,4 +37,16 @@ export default defineConfig({
       },
     }),
   ],
+  server: {
+    proxy: {
+      // Proxy /api requests to the Azure Functions backend
+      // (avoids CORS issues when developing on localhost)
+      '/api': {
+        target: 'https://lesothouberapi-a7fmgdfsfjbwbqgu.northeurope-01.azurewebsites.net',
+        changeOrigin: true,
+        secure: true,
+        ws: true,  // support WebSocket upgrade for SignalR
+      },
+    },
+  },
 })

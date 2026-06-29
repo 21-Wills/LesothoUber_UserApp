@@ -1,0 +1,17 @@
+{
+  "navigationFallback": {
+    "rewrite": "/index.html",
+    "exclude": ["/images/**", "/pwa-*.png", "/manifest.json", "/favicon.svg"]
+  },
+  "routes": [
+    {
+      "route": "/api/*",
+      "allowedRoles": ["anonymous"]
+    }
+  ],
+  "globalHeaders": {
+    "X-Content-Type-Options": "nosniff",
+    "X-Frame-Options": "DENY",
+    "Content-Security-Policy": "default-src 'self' https://lesothouberapi-a7fmgdfsfjbwbqgu.northeurope-01.azurewebsites.net https://*.signalr.net wss://*.signalr.net; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://lesothouberapi-a7fmgdfsfjbwbqgu.northeurope-01.azurewebsites.net https://*.signalr.net wss://*.signalr.net;"
+  }
+}

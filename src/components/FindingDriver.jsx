@@ -1,10 +1,26 @@
 import MapBackground from './MapBackground'
 import { Car3D, Taxi3D } from './VehicleIcons'
 
-const FindingDriver = ({ pickup, destination, price, onCancel }) => {
+const STATUS_LABELS = {
+  connected: 'Broadcasting to drivers',
+  connecting: 'Connecting...',
+  reconnecting: 'Reconnecting...',
+  disconnected: 'Offline',
+}
+
+const FindingDriver = ({ pickup, destination, price, signalRStatus, onCancel }) => {
+  const statusLabel = STATUS_LABELS[signalRStatus] || 'Connecting...'
+  const isConnected = signalRStatus === 'connected'
+
   return (
     <div className="screen finding-screen">
       <MapBackground state="finding" />
+
+      {/* SignalR status indicator */}
+      <div className={`signalr-status ${isConnected ? 'signalr-status--on' : 'signalr-status--off'}`}>
+        <span className={`signalr-dot ${isConnected ? 'signalr-dot--pulse' : ''}`} />
+        <span className="signalr-label">{statusLabel}</span>
+      </div>
 
       {/* Radar animation in the map area */}
       <div className="radar-container">
@@ -44,7 +60,7 @@ const FindingDriver = ({ pickup, destination, price, onCancel }) => {
           </span>
         </div>
         <p className="finding-subtitle">
-          Broadcasting to nearby drivers in your area
+          Broadcasting ride request to nearby drivers
         </p>
 
         {/* Trip summary */}
