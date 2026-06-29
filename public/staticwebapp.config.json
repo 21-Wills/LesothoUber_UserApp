@@ -1,7 +1,7 @@
 {
   "navigationFallback": {
     "rewrite": "/index.html",
-    "exclude": ["/images/**", "/pwa-*.png", "/manifest.json", "/favicon.svg"]
+    "exclude": ["/images/*", "/pwa-*.png", "/manifest.json", "/favicon.svg", "/.well-known/*"]
   },
   "routes": [
     {
